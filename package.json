@@ -1,0 +1,29 @@
+{
+  "name": "math-learning-platform",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Arabic RTL learning platform with server-enforced access control",
+  "main": "server/index.js",
+  "scripts": {
+    "start": "node server/index.js",
+    "dev": "node --watch server/index.js",
+    "bootstrap:admin": "node server/scripts/bootstrap-admin.js",
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cookie-parser": "^1.4.7",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "express-rate-limit": "^7.5.0",
+    "hls.js": "^1.6.15",
+    "helmet": "^8.0.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.9.5",
+    "multer": "^2.0.2",
+    "zod": "^3.24.1"
+  }
+}

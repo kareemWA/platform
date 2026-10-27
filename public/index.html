@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101e3a">
+  <meta name="description" content="منصة بشمهندس إسماعيل أحمد لشرح وتدريب الرياضيات للمرحلة الثانوية.">
+  <title>منصة بشمهندس إسماعيل أحمد | الرياضيات</title>
+  <link rel="stylesheet" href="styles.css?v=30">
+  <link rel="stylesheet" href="watch.css?v=4">
+  <link rel="stylesheet" href="exam-admin.css?v=1">
+</head>
+<body class="app-loading">
+  <div id="app-loading" role="status" aria-live="polite"><span class="app-loading-spinner" aria-hidden="true"></span><strong>جارٍ تجهيز المنصة...</strong></div>
+  <header class="site-header">
+    <a class="brand" href="#home" aria-label="منصة بشمهندس إسماعيل أحمد - الرئيسية">
+      <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M7 35 18 12l7 14 5-9 11 18H7Z"/><path d="M17 35h24M19 19l5 2m7 1 5 2"/></svg></span>
+      <span><strong>بشمهندس إسماعيل أحمد</strong><small>منصة الرياضيات</small></span>
+    </a>
+    <button class="menu-toggle" aria-label="فتح القائمة" aria-expanded="false"><span></span><span></span><span></span></button>
+    <nav class="main-nav" aria-label="القائمة الرئيسية">
+      <a href="#home" class="nav-link active" data-view="home">الرئيسية</a>
+      <a href="#courses" class="nav-link" data-view="courses">الكورسات</a>
+      <a href="#teacher" class="nav-link" data-view="teacher">المدرس</a>
+      <a href="#faq" class="nav-link" data-view="faq">الأسئلة الشائعة</a>
+      <a href="#dashboard" class="nav-link auth-only hidden" data-view="dashboard">لوحة الطالب</a>
+      <a href="#admin" class="nav-link admin-only hidden" data-view="admin">الإدارة</a>
+    </nav>
+    <div class="header-actions">
+      <button class="icon-button" id="theme-toggle" aria-label="تغيير المظهر" title="تغيير المظهر"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"/></svg></button>
+      <button class="button button-small button-outline" data-action="login">تسجيل الدخول</button>
+      <button class="button button-small button-primary" data-action="signup">إنشاء حساب <span>←</span></button>
+      <a href="#profile" class="profile-link auth-only hidden" data-view="profile" aria-label="الملف الشخصي" title="الملف الشخصي">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="7" r="3.2"></circle><path d="M5.5 20c.7-4 2.8-6 6.5-6s5.8 2 6.5 6"></path></svg>
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <section class="view inner-view auth-view" id="view-login" data-title="تسجيل الدخول">
+      <div class="auth-shell">
+        <div class="auth-form-panel"><span class="section-kicker">أهلًا بعودتك</span><h1>تسجيل الدخول</h1><p class="auth-intro">استخدم رقم الهاتف أو البريد الإلكتروني وكلمة المرور للدخول إلى حسابك.</p><form class="auth-page-form" id="login-form"><label>رقم الهاتف <input name="phoneNumber" type="text" inputmode="text" autocomplete="username" required placeholder="+20... أو name@example.com"><small class="field-error" data-error-for="phoneNumber"></small></label><label>كلمة المرور<div class="password-field"><input name="password" type="password" autocomplete="current-password" required><button type="button" class="password-toggle" data-password-toggle aria-label="إظهار كلمة المرور">إظهار</button></div><small class="field-error" data-error-for="password"></small></label><p class="auth-form-error" id="login-error" role="alert"></p><button class="button button-primary full-width" type="submit">تسجيل الدخول</button></form><p class="auth-switch">ليس لديك حساب؟ <a href="#signup" data-view="signup">إنشاء حساب جديد</a></p></div>
+      </div>
+    </section>
+
+    <section class="view inner-view auth-view" id="view-signup" data-title="إنشاء حساب">
+      <div class="auth-shell">
+        <div class="auth-form-panel"><span class="section-kicker">حساب طالب جديد</span><h1>إنشاء حساب</h1><div class="signup-progress" aria-live="polite"><span class="signup-step active" data-step-indicator="1">1</span><i></i><span class="signup-step" data-step-indicator="2">2</span><i></i><span class="signup-step" data-step-indicator="3">3</span><strong id="signup-step-label">المرحلة 1 من 3</strong></div><form class="auth-page-form" id="signup-form" novalidate>
+          <fieldset data-signup-step="1"><legend>البيانات الشخصية</legend><label>الاسم الرباعي باللغة العربية<input name="displayName" required autocomplete="name" placeholder="الاسم الأول الثاني الثالث الرابع"><small class="field-error" data-error-for="displayName"></small></label><label>رقم هاتف الطالب<input name="phoneNumber" type="tel" inputmode="tel" required placeholder="+20..." pattern="\\+?[0-9\\s()-]{8,20}"><small class="field-error" data-error-for="phoneNumber"></small></label><label>رقم هاتف ولي الأمر<input name="parentPhoneNumber" type="tel" inputmode="tel" required placeholder="+20..." pattern="\\+?[0-9\\s()-]{8,20}"><small class="field-error" data-error-for="parentPhoneNumber"></small></label></fieldset>
+          <fieldset data-signup-step="2" hidden><legend>البيانات الدراسية</legend><label>الصف الدراسي<select name="grade" required><option value="">اختر الصف الدراسي</option></select><small class="field-error" data-error-for="grade"></small></label><div class="choice-group"><span>نوع الدراسة</span><label><input type="radio" name="studyType" value="online" required> طالب أونلاين</label><label><input type="radio" name="studyType" value="center"> طالب سنتر</label><small class="field-error" data-error-for="studyType"></small></div></fieldset>
+          <fieldset data-signup-step="3" hidden><legend>بيانات الحساب</legend><label>كلمة المرور<div class="password-field"><input name="password" type="password" minlength="10" maxlength="128" autocomplete="new-password" required><button type="button" class="password-toggle" data-password-toggle aria-label="إظهار كلمة المرور">إظهار</button></div><small class="field-error" data-error-for="password"></small></label><label>تأكيد كلمة المرور<div class="password-field"><input name="confirmPassword" type="password" minlength="10" maxlength="128" autocomplete="new-password" required><button type="button" class="password-toggle" data-password-toggle aria-label="إظهار كلمة المرور">إظهار</button></div><small class="field-error" data-error-for="confirmPassword"></small></label></fieldset>
+          <p class="auth-form-error" id="signup-error" role="alert"></p><div class="signup-actions"><button class="button button-outline" type="button" data-signup-prev hidden>السابق</button><button class="button button-primary" type="button" data-signup-next>التالي</button><button class="button button-primary" type="submit" data-signup-submit hidden>إنشاء الحساب</button></div>
+        </form><p class="auth-switch">لديك حساب؟ <a href="#login" data-view="login">تسجيل الدخول</a></p></div>
+      </div>
+    </section>
+    <section class="view active" id="view-home" data-title="الرئيسية">
+      <div class="section-shell" id="announcement-slot" aria-live="polite"></div>
+      <section class="hero section-shell">
+    
+        <div class="hero-copy">
+          <h1>افهم الرياضيات <span class="text-highlight">صح،</span><br>مع بشمهندس اسماعيل احمد</h1>
+          <p class="hero-lead">دروس وتدريبات تساعدك تفهم الرياضيات وتتابع تقدمك.</p>
+          <div class="hero-actions"><button class="button button-primary button-large" data-view="courses">اكتشف الكورسات <span>←</span></button><button class="button button-quiet button-large" data-view="teacher"><span class="play-small">▶</span> تعرّف على المدرس</button></div>
+        </div>
+        <div class="hero-art">
+          <div class="art-glow"></div><div class="math-card"><div class="math-card-top"><span class="live-pill"><i></i> مساحة للتفكير</span><span class="dots">•••</span></div><div class="math-equation">f(x) = <span>∫</span> (x² + 1) dx</div><div class="math-rule"></div><div class="math-answer">= x³/3 + x + C</div><div class="art-note"><span class="note-check">✓</span><span><strong>الفكرة قبل الحل</strong><small>افهم الخطوات واحدة واحدة</small></span></div><div class="math-scribble">∠ &nbsp; Δ &nbsp; π</div></div>
+          <div class="floating-card floating-1"><span class="float-icon">✦</span><span><strong>تدريب بعد كل درس</strong><small>ثبّت المعلومة بالتطبيق</small></span></div><div class="floating-card floating-2"><span class="progress-ring">75%</span><span><strong>تقدمك قدامك</strong><small>تابع رحلتك بوضوح</small></span></div>
+          <span class="decor decor-a">＋</span><span class="decor decor-b">×</span><span class="decor decor-c">÷</span>
+        </div>
+      </section>
+      <section class="stats-strip section-shell"><div><strong>٣</strong><span>صفوف دراسية</span></div><div><strong>مسار واضح</strong><span>من الدرس للتدريب</span></div><div><strong>تعلّم بتركيز</strong><span>على وتيرتك الخاصة</span></div><div><strong>منهج مرتب</strong><span>وحدات ودروس متسلسلة</span></div></section>
+      <section class="section-shell section-block">
+        <div class="section-heading"><div><span class="section-kicker">ابدأ من مستواك</span><h2>اختار صفك الدراسي</h2></div><button class="text-link" data-view="courses">كل الكورسات <span>←</span></button></div>
+        <div class="grade-grid" id="grade-grid">
+          <button class="grade-card grade-one" data-grade="الأول الثانوي"><span class="grade-symbol">x²</span><span class="grade-content"><strong>الصف الأول الثانوي</strong><span>ابدأ من الأساس</span></span><span class="round-arrow">←</span></button>
+          <button class="grade-card grade-two" data-grade="الثاني الثانوي"><span class="grade-symbol">π</span><span class="grade-content"><strong>الصف الثاني الثانوي</strong><span>طوّر مهاراتك</span></span><span class="round-arrow">←</span></button>
+          <button class="grade-card grade-three" data-grade="الثالث الثانوي"><span class="grade-symbol">∑</span><span class="grade-content"><strong>الصف الثالث الثانوي</strong><span>استعد للامتحان</span></span><span class="round-arrow">←</span></button>
+        </div>
+      </section>
+      <section class="section-shell section-block feature-section"><div class="section-heading"><div><span class="section-kicker">داخل كل درس</span><h2>شرح ثم تطبيق</h2></div></div><div class="feature-grid">
+        <article class="feature-card"><span class="feature-icon blue-icon">⌘</span><h3>شرح مرتب وواضح</h3><p>افهم المنهج خطوة بخطوة.</p><span class="feature-index">01</span></article>
+        <article class="feature-card"><span class="feature-icon violet-icon">✎</span><h3>تدريب يثبت المعلومة</h3><p>طبّق بعد كل درس.</p><span class="feature-index">02</span></article>
+        <article class="feature-card"><span class="feature-icon amber-icon">◷</span><h3>تابع تقدمك</h3><p>اعرف إنجازك وخطوتك القادمة.</p><span class="feature-index">03</span></article>
+        <article class="feature-card"><span class="feature-icon mint-icon">◎</span><h3>مراجعة وقت ما تحتاج</h3><p>ارجع للدروس بسهولة.</p><span class="feature-index">04</span></article>
+      </div></section>
+      <section class="section-shell teacher-preview"><div class="teacher-portrait"><img class="teacher-portrait-image" src="/teacher-portrait.png" alt="بشمهندس إسماعيل أحمد"></div><div class="teacher-copy"><span class="section-kicker">المدرس</span><h2>بشمهندس إسماعيل أحمد</h2><p>شرح رياضيات مبسّط ومنظم يساعدك على الفهم والتدريب.</p><div class="teacher-details"><span> شرح منظم</span><span> متابعة التقدم</span><span> تدريب مستمر</span></div><button class="button button-outline" data-view="teacher">اعرف أكثر عن المدرس <span>←</span></button></div></section>
+      <section class="cta-section section-shell"><div class="cta-shape">∫</div><div><span class="section-kicker">ابدأ الآن</span><h2>جاهز تتعلم الرياضيات؟</h2></div><button class="button button-white" data-view="courses">اختار الكورس <span>←</span></button></section>
+    </section>
+
+    <section class="view inner-view" id="view-courses" data-title="الكورسات">
+      <div class="page-hero"><div class="section-shell page-hero-inner"><div><span class="section-kicker">اختار كورس وابدا </span><h1>الكورسات</h1></div><span class="page-hero-art">∑</span></div></div>
+      <div class="section-shell section-block"><div class="course-toolbar"><div class="course-filters"><div class="filter-tabs course-categories" role="group" aria-label="تصنيف الكورسات"><button class="filter-button selected" data-course-category="mine">كورساتي</button><button class="filter-button" data-course-category="class">كل الكورسات</button><button class="filter-button" data-course-category="free">كورسات مجانية</button></div><div class="filter-tabs grade-filters" role="group" aria-label="تصفية حسب الصف"><button class="filter-button selected" data-filter="الكل">كل الصفوف</button><button class="filter-button" data-filter="الأول الثانوي">الأول الثانوي</button><button class="filter-button" data-filter="الثاني الثانوي">الثاني الثانوي</button><button class="filter-button" data-filter="الثالث الثانوي">الثالث الثانوي</button></div></div><label class="search-box"><span>⌕</span><input type="search" id="course-search" placeholder="ابحث..." aria-label="ابحث عن كورس"></label></div><div class="course-grid" id="course-grid"></div><div class="empty-state hidden" id="course-empty"><span>⌕</span><strong>لا توجد كورسات</strong><p>جرّب كلمة بحث أخرى.</p></div></div>
+    </section>
+
+    <section class="view inner-view" id="view-course" data-title="تفاصيل الكورس"><div class="section-shell section-block" id="course-detail"></div></section>
+    <section class="view inner-view" id="view-lesson" data-title="مشاهدة المحاضرة"><div class="section-shell section-block" id="lesson-detail"></div></section>
+
+    <section class="view inner-view" id="view-teacher" data-title="المدرس"><div class="section-shell section-block teacher-page"><img class="teacher-page-image" src="/teacher-portrait.png" alt="بشمهندس إسماعيل أحمد"><div><span class="section-kicker">مدرس الرياضيات</span><h1>بشمهندس إسماعيل أحمد</h1><p>شرح منظم يركز على الفهم والتطبيق.</p><div class="teacher-details"><span>شرح حسب الصف</span><span>تدريبات ومراجعة</span><span>تعلّم بوقتك</span></div><div class="notice-box"><strong>نبذة المدرس</strong><p></p></div></div></div></section>
+
+    <section class="view inner-view" id="view-faq" data-title="الأسئلة الشائعة"><div class="section-shell section-block faq-page"><h1>أسئلة شائعة</h1><div class="faq-list">
+      <details><summary>كيف ألتحق بكورس مجاني؟<span>＋</span></summary><p>أنشئ حسابًا ثم اختر الكورس.</p></details>
+      <details><summary>متى أرى الكورس المدفوع؟<span>＋</span></summary><p>بعد تأكيد الدفع.</p></details>
+      <details><summary>هل تعمل المنصة على الهاتف؟<span>＋</span></summary><p>نعم، التصميم متجاوب.</p></details>
+      <details><summary>هل يُحفظ تقدمي؟<span>＋</span></summary><p>نعم، بعد تسجيل الدخول.</p></details>
+      <details><summary>هل الملفات محمية؟<span>＋</span></summary><p>يتحقق الخادم من صلاحيتك قبل عرضها.</p></details>
+    </div></div></section>
+
+    <section class="view inner-view" id="view-dashboard" data-title="لوحة الطالب"><div class="section-shell section-block" id="dashboard-content"></div></section>
+    <section class="view inner-view" id="view-exams" data-title="الامتحانات والواجبات"><div class="section-shell section-block" id="exams-content"></div></section>
+    <section class="view inner-view" id="view-results" data-title="نتائج الامتحانات"><div class="section-shell section-block" id="results-content"></div></section>
+    <section class="view inner-view" id="view-profile" data-title="الملف الشخصي"><div class="section-shell section-block" id="profile-content"></div></section>
+    <section class="view inner-view" id="view-payment-details" data-title="تفاصيل الدفع"><div class="section-shell section-block" id="payment-details-content"></div></section>
+    <section class="view inner-view" id="view-payment-return" data-title="حالة الدفع"><div class="section-shell section-block" id="payment-return-content"></div></section>
+    <section class="view inner-view" id="view-contact" data-title="تواصل معنا"><div class="section-shell section-block contact-page"><div><h1>تواصل معنا</h1><p>نموذج التواصل غير مفعّل حاليًا.</p><div class="contact-details"><span>✉ &nbsp; راسل الإدارة</span></div></div><form class="contact-form" id="contact-form"><label>الاسم<input name="name" required placeholder="الاسم"></label><label>البريد الإلكتروني<input type="email" name="email" required placeholder="name@example.com"></label><label>رسالتك<textarea name="message" rows="4" required placeholder="رسالتك"></textarea></label><button class="button button-primary full-width" type="submit">إرسال الرسالة <span>←</span></button><p class="form-feedback" id="contact-feedback" role="status"></p></form></div></section>
+    <section class="view inner-view" id="view-admin" data-title="لوحة الإدارة"><div class="section-shell section-block" id="admin-content"></div></section>
+  </main>
+
+  <footer class="site-footer"><div class="section-shell footer-main"><div class="footer-brand"><a class="brand brand-light" href="#home"><span class="brand-mark"><svg viewBox="0 0 48 48"><path d="M7 35 18 12l7 14 5-9 11 18H7Z"/><path d="M17 35h24M19 19l5 2m7 1 5 2"/></svg></span><span><strong>بشمهندس إسماعيل أحد</strong><small>منصة الرياضيات</small></span></a><p>رياضيات الثانوية ببساطة.</p></div><div class="footer-links"><strong>استكشف</strong><a href="#courses" data-view="courses">الكورسات</a><a href="#teacher" data-view="teacher">عن المدرس</a></div><div class="footer-links"><strong>مساعدة</strong><a href="#faq" data-view="faq">الأسئلة الشائعة</a><a href="#contact" data-view="contact">تواصل معنا</a><button data-action="login">تسجيل الدخول</button></div><div class="footer-links"><strong>سياسات المنصة</strong><a href="#privacy" data-policy="الخصوصية">الخصوصية</a><a href="#terms" data-policy="الاستخدام">شروط الاستخدام</a><span class="footer-note">قريبًا</span></div></div><div class="section-shell footer-bottom"><span>© <span id="year"></span> منصة بشمهندس إسماعيل أحد</span><span>الرياضيات أوضح.</span></div></footer>
+
+  <div class="modal-backdrop" id="modal-backdrop" aria-hidden="true"><section class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modal-title"><button class="modal-close" aria-label="إغلاق">×</button><div id="modal-body"></div></section></div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="hls.min.js"></script>
+  <script src="app.js?v=50"></script>
+</body>
+</html>
