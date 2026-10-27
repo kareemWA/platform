@@ -1,0 +1,21 @@
+{
+  "version": 2,
+  "functions": {
+    "api/[...path].js": {
+      "includeFiles": [
+        "photo/**",
+        "node_modules/hls.js/dist/hls.min.js"
+      ]
+    }
+  },
+  "rewrites": [
+    {
+      "source": "/teacher-portrait.png",
+      "destination": "/api/_assets/teacher-portrait"
+    },
+    {
+      "source": "/hls.min.js",
+      "destination": "/api/_assets/hls.min.js"
+    }
+  ]
+}

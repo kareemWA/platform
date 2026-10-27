@@ -49,6 +49,16 @@ function createApp(env) {
     const connected = mongoose.connection.readyState === 1;
     res.status(connected ? 200 : 503).json({ status: connected ? "ok" : "database_unavailable" });
   });
+  app.get("/api/_assets/teacher-portrait", (_req, res, next) => {
+    res.sendFile(path.resolve(__dirname, "..", "photo", "Professional Suit Portrait Cutout.png"), error => {
+      if (error) next(error);
+    });
+  });
+  app.get("/api/_assets/hls.min.js", (_req, res, next) => {
+    res.sendFile(path.resolve(__dirname, "..", "node_modules", "hls.js", "dist", "hls.min.js"), error => {
+      if (error) next(error);
+    });
+  });
   app.use("/api/payments", webhookRouter);
   app.use("/api", createCsrfMiddleware(), optional);
 

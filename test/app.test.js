@@ -71,6 +71,14 @@ test("HTTP app serves only public frontend assets and protects API entry points"
     assert.equal(teacherPortrait.status, 200);
     assert.match(teacherPortrait.headers.get("content-type"), /image\/png/);
 
+    const vercelTeacherPortrait = await fetch(`${baseUrl}/api/_assets/teacher-portrait`);
+    assert.equal(vercelTeacherPortrait.status, 200);
+    assert.match(vercelTeacherPortrait.headers.get("content-type"), /image\/png/);
+
+    const vercelHlsBundle = await fetch(`${baseUrl}/api/_assets/hls.min.js`);
+    assert.equal(vercelHlsBundle.status, 200);
+    assert.match(vercelHlsBundle.headers.get("content-type"), /javascript/);
+
     const appBundle = await fetch(`${baseUrl}/app.js`);
     const appSource = await appBundle.text();
     assert.equal(appBundle.status, 200);
